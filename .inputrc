@@ -1,0 +1,6 @@
+# Mac terminal fixes.  In keyboard profile, set:
+# - 'home' (single arrow pointing northwest) to \033[7~
+# - 'end' (single arrow pointing southeast) to \033[8~
+# This will allow 'home' and 'end' to do right in apps and the shell.
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line
