@@ -4,7 +4,7 @@ Other requirements
 ------------------
 
 * [Git completion script](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash) stored at `~/.git-completion.bash`.
-* [Git prompt script](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh) stored at `~/.git-prompt.sh`.
+* Better git prompt script: `git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1`
 
 TODO
 ----
