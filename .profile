@@ -15,12 +15,5 @@ fi
 # If the git completion code exists, load it.
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
 
-# If the git prompt code exists, load it and configure.
-if [[ -f ~/.git-prompt.sh ]]; then
-    source ~/.git-prompt.sh
-    export GIT_PS1_SHOWDIRTYSTATE=yes
-    export GIT_PS1_SHOWSTASHSTATE=yes
-    export GIT_PS1_SHOWUNTRACKEDFILES=yes
-    export GIT_PS1_SHOWCOLORHINTS=yes
-    export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
-fi
+# Put in some reasonable less defaults.
+export LESS="-FRX"
