@@ -11,3 +11,6 @@ fi
 
 # If VSCode is installed, provide a nice alias.
 [[ -d "/Applications/Visual Studio Code.app" ]] && alias Code="open -a 'Visual Studio Code' ."
+
+# If the git completion code exists, load it.
+[[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
