@@ -9,4 +9,4 @@ Other requirements
 TODO
 ----
 
-* More detail around all the Mac Terminal keyboard changes!
+* Git configuration, less user/email?
