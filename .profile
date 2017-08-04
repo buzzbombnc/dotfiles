@@ -28,4 +28,4 @@ if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
 fi
 
 # Put in some reasonable less defaults.
-export LESS="-FRX"
+export LESS="-FRXi"
