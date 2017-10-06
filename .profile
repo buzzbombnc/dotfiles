@@ -29,3 +29,6 @@ fi
 
 # Put in some reasonable less defaults.
 export LESS="-FRXi"
+
+# Vagrant helper aliases.
+which vagrant &>/dev/null && [[ -f ~/.vagrant-helpers.sh ]] && source ~/.vagrant-helpers.sh
