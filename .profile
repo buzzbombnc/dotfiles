@@ -1,5 +1,5 @@
-# brew version of updated Ruby
-[[ -d /usr/local/opt/ruby/bin ]] && PATH=/usr/local/opt/ruby/bin:$PATH
+# rbenv setup
+which rbenv &>/dev/null && eval "$(rbenv init -)"
 
 # brew version of updated nano
 if [[ -x /usr/local/bin/nano ]]; then
