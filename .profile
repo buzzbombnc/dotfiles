@@ -32,3 +32,15 @@ export LESS="-FRXi"
 
 # Vagrant helper aliases.
 which vagrant &>/dev/null && [[ -f ~/.vagrant-helpers.sh ]] && source ~/.vagrant-helpers.sh
+
+# New tab function for Terminal on Mac.
+if [[ $(uname) == "Darwin" ]]; then
+    new_tab() {
+        COMMAND=$*
+        osascript \
+        -e "tell application \"Terminal\"" \
+        -e "tell application \"System Events\" to keystroke \"t\" using {command down}" \
+        -e "do script \"$COMMAND\" in front window" \
+        -e "end tell" > /dev/null
+    }
+fi
