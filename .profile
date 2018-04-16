@@ -44,3 +44,6 @@ if [[ $(uname) == "Darwin" ]]; then
         -e "end tell" > /dev/null
     }
 fi
+
+# Bash completion.
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
