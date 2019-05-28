@@ -1,0 +1,20 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "python.linting.pylintPath": "/Users/ktreadway/python-lint/bin/pylint",
+    "python.linting.pep8Path": "/Users/ktreadway/python-lint/bin/pep8",
+    "python.linting.flake8Path": "/Users/ktreadway/python-lint/bin/flake8",
+    "python.linting.pydocstylePath": "/Users/ktreadway/python-lint/bin/pydocstyle",
+    "editor.renderWhitespace": "boundary",
+    "workbench.startupEditor": "none",
+    "[python]": {},
+    "workbench.editor.labelFormat": "medium",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "markdown.extension.toc.updateOnSave": false,
+    "editor.multiCursorModifier": "alt",
+    "window.zoomLevel": 0,
+    "ruby.codeCompletion": "rcodetools",
+    "breadcrumbs.enabled": true,
+    "git.autofetch": true,
+    "ruby.useBundler": true,
+    "ruby.useLanguageServer": true
+}
