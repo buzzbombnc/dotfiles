@@ -1,12 +1,17 @@
 # rbenv setup
 which rbenv &>/dev/null && eval "$(rbenv init -)"
 
-# brew version of updated nano
+# brew version of updated nano for Mac.
 if [[ -x /usr/local/bin/nano ]]; then
-    EDITOR=/usr/local/bin/nano
-    export EDITOR
-
+    NANO=/usr/local/bin/nano
     alias nano=/usr/local/bin/nano
+else
+    which nano >/dev/null 2>&1 && NANO=$(which nano)
+fi
+
+if [[ -n "$NANO" ]]; then
+    EDITOR=$NANO
+    export EDITOR
 fi
 
 # If VSCode is installed, provide a nice alias.
