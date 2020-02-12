@@ -47,3 +47,9 @@ fi
 
 # Bash completion.
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# WSL helpers
+if [[ $(uname -r) =~ 'Microsoft' ]]; then
+  # Depends on external SSH agent socket to pageant like https://gist.github.com/buzzbombnc/efc1d4b532db8e181bf335b172e3c590.
+  export SSH_AUTH_SOCK=/mnt/c/Users/$USER/.ssh/ssh-agent.sock
+fi
