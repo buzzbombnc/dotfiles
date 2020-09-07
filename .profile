@@ -62,5 +62,9 @@ fi
 # Symlink and re-use SSH auth sockets to enable easier use of screen.
 if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+export SSH_AUTH_SOCK
+
+# Bring in .bashrc, if it exists.
+[[ -f ~/.bashrc ]] && . ~/.bashrc
