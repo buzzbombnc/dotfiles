@@ -17,8 +17,8 @@ fi
 # If VSCode is installed, provide a nice alias.
 [[ -d "/Applications/Visual Studio Code.app" ]] && alias Code="open -a 'Visual Studio Code' ."
 
-# If the git completion code exists, load it.
-[[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
+# If the git completion code exists (`brew install bash-completion`), load it.
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # If the git prompt code exists, load it.
 if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
