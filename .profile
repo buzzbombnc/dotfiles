@@ -17,8 +17,12 @@ fi
 # If VSCode is installed, provide a nice alias.
 [[ -d "/Applications/Visual Studio Code.app" ]] && alias Code="open -a 'Visual Studio Code' ."
 
-# If the git completion code exists (`brew install bash-completion`), load it.
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+# Bash completion.
+if [[ -f /usr/local/etc/bash_completion ]]; then
+    . /usr/local/etc/bash_completion
+elif [[ -f ~/.git-completion.bash ]]; then
+    source ~/.git-completion.bash
+fi
 
 # If the git prompt code exists, load it.
 if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
@@ -49,9 +53,6 @@ if [[ $(uname) == "Darwin" ]]; then
         -e "end tell" > /dev/null
     }
 fi
-
-# Bash completion.
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # WSL helpers
 if [[ $(uname -r) =~ 'Microsoft' ]]; then
