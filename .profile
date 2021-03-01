@@ -55,7 +55,21 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # WSL helpers
-if [[ $(uname -r) =~ 'Microsoft' ]]; then
+if [[ $(uname -r) =~ 'WSL2' ]]; then
+  # Where to find the wsl2-ssh-pageant.exe file (https://github.com/BlackReloaded/wsl2-ssh-pageant)
+  WSLAGENT=~/.ssh/wsl2-ssh-pageant.exe
+  # Requires both ss and socat and the WSLAGENT be executable.
+  if ! which ss &>/dev/null || ! which socat &>/dev/null || [[ ! -x "$WSLAGENT" ]]; then
+    echo "WARNING: ss, socat, and wsl2-ssh-pageant.exe utilities must be installed and executable for SSH agent connection."
+  else
+    export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+    ss -a | grep -q $SSH_AUTH_SOCK
+    if [ $? -ne 0 ]; then
+      rm -f $SSH_AUTH_SOCK
+      (setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:$WSLAGENT &>/dev/null &)
+    fi
+  fi
+elif [[ $(uname -r) =~ 'Microsoft' ]]; then
   # Depends on external SSH agent socket to pageant like https://gist.github.com/buzzbombnc/efc1d4b532db8e181bf335b172e3c590.
   SSH_AUTH_SOCK=/mnt/c/Users/$USER/.ssh/ssh-agent.sock
 fi
@@ -66,6 +80,12 @@ if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
     SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 fi
 export SSH_AUTH_SOCK
+
+# Speaking of screen, fix for WSL2 screen issue (https://github.com/microsoft/WSL/issues/1245).
+if [[ $(uname -r) =~ 'WSL2' ]]; then
+  export SCREENDIR=$HOME/.screen
+  [[ -d $SCREENDIR ]] || mkdir -p -m 700 $SCREENDIR
+fi
 
 # Bring in .bashrc, if it exists.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
