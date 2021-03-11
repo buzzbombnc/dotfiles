@@ -17,7 +17,16 @@ Other useful utilities
 * docker (formulae + cask)
 * asdf?
 
+Set iterm2 prefs
+----------------
+
+```
+$ plutil -convert binary1 com.googlecode.iterm2.plist
+$ cp com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
+```
+
 TODO
 ----
 
 * Git configuration, less user/email?
+* nano configuration
