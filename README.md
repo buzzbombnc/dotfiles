@@ -7,6 +7,16 @@ Other requirements
 * Better git prompt script: `git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1`
 * If needed: [Git completion script](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash) stored in either `~/.git-completion.bash` or in the global/user completion directory.
 
+Other useful utilities
+---------------------
+* Homebrew
+* iterm2
+* wget
+* coreutils
+* visual-studio-code
+* docker (formulae + cask)
+* asdf?
+
 TODO
 ----
 
