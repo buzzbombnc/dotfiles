@@ -11,7 +11,8 @@ fi
 
 if [[ -n "$NANO" ]]; then
     EDITOR=$NANO
-    export EDITOR
+    VISUAL=$NANO
+    export EDITOR VISUAL
 fi
 
 # If VSCode is installed, provide a nice alias.
