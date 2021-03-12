@@ -15,6 +15,8 @@ Other useful utilities
 * coreutils
 * visual-studio-code
 * docker (formulae + cask)
+* nano (newer than MacOS)
+* nanorc (syntax coloring)
 * asdf?
 
 Set iterm2 prefs
@@ -42,7 +44,12 @@ Git
 
 Copy pasta `git-config.ini` into the editor, update name/email, save.
 
+Nano
+----
+
+`cp .nanorc ~`
+
 TODO
 ----
 
-* nano configuration
+* asdf additions?
