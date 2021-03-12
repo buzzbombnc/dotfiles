@@ -35,8 +35,14 @@ $ cp vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
 $ cp vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
 
+Git
+---
+
+`$ git config --global -e`
+
+Copy pasta `git-config.ini` into the editor, update name/email, save.
+
 TODO
 ----
 
-* Git configuration, less user/email?
 * nano configuration
