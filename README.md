@@ -25,6 +25,16 @@ $ plutil -convert binary1 com.googlecode.iterm2.plist
 $ cp com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist
 ```
 
+Set VSCode prefs and keybindings
+--------------------------------
+
+* Note that the settings might need a tweak after the fact, depending on extensions installed.
+
+```
+$ cp vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
+$ cp vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+```
+
 TODO
 ----
 
