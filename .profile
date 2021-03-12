@@ -1,5 +1,10 @@
 # rbenv setup
 which rbenv &>/dev/null && eval "$(rbenv init -)"
+# asdf setup
+if which brew &>/dev/null && which asdf &>/dev/null; then
+    # asdf via brew is what we have, most likely.
+    . $(brew --prefix asdf)/asdf.sh
+fi
 
 # brew version of updated nano for Mac.
 if [[ -x /usr/local/bin/nano ]]; then

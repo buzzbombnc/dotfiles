@@ -17,7 +17,7 @@ Other useful utilities
 * docker (formulae + cask)
 * nano (newer than MacOS)
 * nanorc (syntax coloring)
-* asdf?
+* asdf
 
 Set iterm2 prefs
 ----------------
