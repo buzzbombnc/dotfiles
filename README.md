@@ -37,6 +37,18 @@ $ cp vscode-settings.json ~/Library/Application\ Support/Code/User/settings.json
 $ cp vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ```
 
+Set MacOSX keybindings
+----------------------
+
+From here: https://damieng.com/blog/2015/04/24/make-home-end-keys-behave-like-windows-on-mac-os-x
+
+```
+$ mkdir -p ~/Library/KeyBindings/
+$ cp DefaultKeyBinding.dict ~/Library/KeyBindings/
+
+// Reboot or restart finder via: killall Finder
+```
+
 Git
 ---
 
