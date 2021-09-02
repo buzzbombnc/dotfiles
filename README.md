@@ -49,6 +49,15 @@ $ cp DefaultKeyBinding.dict ~/Library/KeyBindings/
 // Reboot or restart finder via: killall Finder
 ```
 
+Frog Sound
+----------
+
+Big Sur is stupid and doesn't have my Frog beep sound.  This will not stand.
+
+```
+$ cp frog_beep_sound.aiff ~/Library/Sounds
+```
+
 Git
 ---
 
