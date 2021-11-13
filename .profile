@@ -4,6 +4,9 @@ which rbenv &>/dev/null && eval "$(rbenv init -)"
 if which brew &>/dev/null && which asdf &>/dev/null; then
     # asdf via brew is what we have, most likely.
     . $(brew --prefix asdf)/asdf.sh
+elif [[ -f $HOME/.asdf/asdf.sh ]]; then
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
 fi
 
 # brew version of updated nano for Mac.
