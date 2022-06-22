@@ -109,4 +109,19 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# Save bash history across sessions.
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+# Save, clear, and reload the history after each command finishes
+# (This can be disruptive if you use multiple sessions at once.)
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# Append to the history after each command finishes, but keep your
+# current session's history stack intact.
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 export PATH
