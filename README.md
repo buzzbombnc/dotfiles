@@ -18,6 +18,7 @@ Other useful utilities
 * nano (newer than MacOS)
 * nanorc (syntax coloring)
 * asdf
+* rclone
 
 Set iterm2 prefs
 ----------------
