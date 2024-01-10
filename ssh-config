@@ -1,0 +1,6 @@
+Host buzzbombnc.github.com
+  Hostname github.com
+  User git
+  ForwardAgent no
+  IdentityFile ~/private/buzzbombnc-github.pub
+  IdentitiesOnly yes

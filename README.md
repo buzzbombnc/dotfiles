@@ -68,7 +68,16 @@ Copy pasta `git-config.ini` into the editor, update name/email, save.
 Nano
 ----
 
-`cp .nanorc ~`
+* `cp .nanorc ~`
+* Update for the local system type (Linux default, but Intel Mac + ARM Mac included).
+
+SSH Config
+----------
+
+* `ssh-config` has notes on selecting which key to use for a given (fake) hostname.
+* Assumption:
+    - You're using your SSH agent.
+    - `IdentityFile` will need to be a *public* key parameter a la `ssh-add -L | grep <KEYNAME> > KEYNAME.pub`.
 
 TODO
 ----
