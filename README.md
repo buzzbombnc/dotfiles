@@ -79,6 +79,13 @@ SSH Config
     - You're using your SSH agent.
     - `IdentityFile` will need to be a *public* key parameter a la `ssh-add -L | grep <KEYNAME> > KEYNAME.pub`.
 
+Rclone
+------
+
+* Configure using `rclone configure`.
+* You'll need [Google Drive docs](https://rclone.org/drive/) and mind the "Making your own client_id" section.
+* In the advanced options, note the `root_folder_id` option to limit the blast radius!
+
 TODO
 ----
 
