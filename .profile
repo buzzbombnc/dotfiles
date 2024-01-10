@@ -1,5 +1,3 @@
-# rbenv setup
-which rbenv &>/dev/null && eval "$(rbenv init -)"
 # asdf setup
 if which brew &>/dev/null && which asdf &>/dev/null; then
     # asdf via brew is what we have, most likely.
@@ -48,9 +46,7 @@ fi
 # Put in some reasonable less defaults.
 export LESS="-FRXi"
 
-# Vagrant helper aliases.
-which vagrant &>/dev/null && [[ -f ~/.vagrant-helpers.sh ]] && source ~/.vagrant-helpers.sh
-
+# TODO: Fix this for iTerm2?
 # New tab function for Terminal on Mac.
 if [[ $(uname) == "Darwin" ]]; then
     new_tab() {
