@@ -16,7 +16,6 @@ Other useful utilities
 * visual-studio-code
 * docker (formulae + cask)
 * nano (newer than MacOS)
-* nanorc (syntax coloring)
 * asdf
 * rclone
 

@@ -233,8 +233,11 @@ include "/usr/share/nano/*.nanorc"
 ## In /usr/share/nano/extra/ you can find some syntaxes that are
 ## specific for certain distros or for some less common languages.
 
-## Mac Homebrew 'nanorc' package
-# include "/usr/local/share/nanorc/*.nanorc"
+## Intel Mac Homebrew 'nanorc' package
+# include "/usr/local/share/nano/*.nanorc"
+
+## ARM Mac Homebrew 'nanorc' package
+# include "/opt/homebrew/share/nano/*.nanorc"
 
 ## If <Tab> should always produce four spaces when editing a Python file,
 ## independent of the settings of 'tabsize' and 'tabstospaces':
