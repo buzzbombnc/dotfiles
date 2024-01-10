@@ -1,35 +1,38 @@
+# brew setup
+# Find the first version of brew that we can (ARM Mac, Intel Mac, Linux) and get the environment setup.
+BREW_BIN=$(find /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew -type f 2>/dev/null | head -1)
+if [[ -n "$BREW_BIN" && -x $BREW_BIN ]]; then
+    eval "$($BREW_BIN shellenv)"
+fi
+
 # asdf setup
-if which brew &>/dev/null && which asdf &>/dev/null; then
+if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
     # asdf via brew is what we have, most likely.
-    . $(brew --prefix asdf)/asdf.sh
+    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
 elif [[ -f $HOME/.asdf/asdf.sh ]]; then
     . $HOME/.asdf/asdf.sh
     . $HOME/.asdf/completions/asdf.bash
 fi
 
-# brew version of updated nano for Mac.
+# brew version of updated nano for Intel Mac.
 if [[ -x /usr/local/bin/nano ]]; then
     NANO=/usr/local/bin/nano
-    alias nano=/usr/local/bin/nano
+elif [[ -n "$HOMEBREW_PREFIX" && -x "$HOMEBREW_PREFIX/bin/nano" ]]; then
+    NANO=$HOMEBREW_PREFIX/bin/nano
 else
     which nano >/dev/null 2>&1 && NANO=$(which nano)
 fi
 
 if [[ -n "$NANO" ]]; then
+    alias nano=$NANO
     EDITOR=$NANO
     VISUAL=$NANO
     export EDITOR VISUAL
 fi
 
-# If VSCode is installed, provide a nice alias.
-[[ -d "/Applications/Visual Studio Code.app" ]] && alias Code="open -a 'Visual Studio Code' ."
-
 # Bash completion.
-if [[ -f /usr/local/etc/bash_completion ]]; then
-    . /usr/local/etc/bash_completion
-elif [[ -f ~/.git-completion.bash ]]; then
-    source ~/.git-completion.bash
-fi
+[[ -f $HOMEBREW_PREFIX/etc/bash_completion ]] && . $HOMEBREW_PREFIX/etc/bash_completion
+[[ -f ~/.git-completion.bash ]] && . ~/.git-completion.bash
 
 # If the git prompt code exists, load it.
 if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
