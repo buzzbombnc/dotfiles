@@ -5,14 +5,14 @@ if [[ -n "$BREW_BIN" && -x $BREW_BIN ]]; then
     eval "$($BREW_BIN shellenv)"
 fi
 
-# asdf setup
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
-    # asdf via brew is what we have, most likely.
-    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-elif [[ -f $HOME/.asdf/asdf.sh ]]; then
-    . $HOME/.asdf/asdf.sh
-    . $HOME/.asdf/completions/asdf.bash
-fi
+# asdf setup -- this is broken.  It's no longer a script.  https://asdf-vm.com/guide/upgrading-to-v0-16.html
+#if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
+#    # asdf setup -- this is broken.  No more asdf.sh in brew.
+#    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
+#elif [[ -f $HOME/.asdf/asdf.sh ]]; then
+#    . $HOME/.asdf/asdf.sh
+#    . $HOME/.asdf/completions/asdf.bash
+#fi
 
 # brew version of updated nano for Intel Mac.
 if [[ -x /usr/local/bin/nano ]]; then
@@ -97,6 +97,11 @@ fi
 
 # Bring in .bashrc, if it exists.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# Prepend asdf shims to the path, if they exist.
+if [ -d "$HOME/.asdf/shims" ] ; then
+    PATH="$HOME/.asdf/shims:$PATH"
+fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
