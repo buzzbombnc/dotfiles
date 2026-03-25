@@ -5,14 +5,14 @@ if [[ -n "$BREW_BIN" && -x $BREW_BIN ]]; then
     eval "$($BREW_BIN shellenv)"
 fi
 
-# asdf setup -- this is broken.  It's no longer a script.  https://asdf-vm.com/guide/upgrading-to-v0-16.html
-#if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
-#    # asdf setup -- this is broken.  No more asdf.sh in brew.
-#    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-#elif [[ -f $HOME/.asdf/asdf.sh ]]; then
-#    . $HOME/.asdf/asdf.sh
-#    . $HOME/.asdf/completions/asdf.bash
-#fi
+# asdf setup
+if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
+    # asdf setup -- this might be broken.  It's no longer a script.  https://asdf-vm.com/guide/upgrading-to-v0-16.html
+    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
+elif [[ -f $HOME/.asdf/asdf.sh ]]; then
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
+fi
 
 # brew version of updated nano for Intel Mac.
 if [[ -x /usr/local/bin/nano ]]; then
@@ -42,7 +42,7 @@ if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
     # GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
     # GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
     # GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
-    GIT_PROMPT_THEME=Single_line
+    GIT_PROMPT_THEME=Single_line_short
     source ~/.bash-git-prompt/gitprompt.sh
 fi
 
