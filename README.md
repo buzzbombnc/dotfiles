@@ -90,3 +90,4 @@ TODO
 ----
 
 * asdf additions?
+* More/better git configuration?  https://blog.gitbutler.com/how-git-core-devs-configure-git
