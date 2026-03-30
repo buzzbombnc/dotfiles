@@ -4,7 +4,9 @@ Other requirements
 ------------------
 
 * WSL2 SSH connection utility: https://github.com/BlackReloaded/wsl2-ssh-pageant.  Download release into ~/.ssh.
-* Better git prompt script: `git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1`
+* Better git prompt script (with short short theme):
+    1. `git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1`
+    2. `cp Single_line_short.bgptheme ~/.bash-git-prompt/themes`
 * Stored git completion script in `~/.git-completion.bash` (or in the global/user completion directory): `curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash`
 
 Other useful utilities
