@@ -64,19 +64,26 @@ fi
 
 # WSL helpers
 if [[ $(uname -r) =~ 'WSL2' ]]; then
-  # Where to find the wsl2-ssh-pageant.exe file (https://github.com/BlackReloaded/wsl2-ssh-pageant)
-  WSLAGENT=~/.ssh/wsl2-ssh-pageant.exe
-  # Requires both ss and socat and the WSLAGENT be executable.
-  if ! which ss &>/dev/null || ! which socat &>/dev/null || [[ ! -x "$WSLAGENT" ]]; then
-    echo "WARNING: ss, socat, and wsl2-ssh-pageant.exe utilities must be installed and executable for SSH agent connection."
-  else
-    export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
-    ss -a | grep -q $SSH_AUTH_SOCK
-    if [ $? -ne 0 ]; then
-      rm -f $SSH_AUTH_SOCK
-      (setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:$WSLAGENT &>/dev/null &)
+    # Two options here: built-in Windows SSH agent from Win11 and later, or the PuttyAgent business.
+
+    # Windows 11: https://github.com/mame/wsl2-ssh-agent (save to wsl2-ssh-agent, chmod 0755)
+    if [[ -x ~/.ssh/wsl2-ssh-agent ]]; then
+        eval $(~/.ssh/wsl2-ssh-agent)
+    elif [[ -x ~/.ssh/wsl2-ssh-pageant.exe ]]; then
+        # Where to find the wsl2-ssh-pageant.exe file (https://github.com/BlackReloaded/wsl2-ssh-pageant)
+        WSLAGENT=~/.ssh/wsl2-ssh-pageant.exe
+        # Requires both ss and socat and the WSLAGENT be executable.
+        if ! which ss &>/dev/null || ! which socat &>/dev/null || [[ ! -x "$WSLAGENT" ]]; then
+            echo "WARNING: ss, socat, and wsl2-ssh-pageant.exe utilities must be installed and executable for SSH agent connection."
+        else
+            export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+            ss -a | grep -q $SSH_AUTH_SOCK
+            if [ $? -ne 0 ]; then
+                rm -f $SSH_AUTH_SOCK
+                (setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:$WSLAGENT &>/dev/null &)
+            fi
+        fi
     fi
-  fi
 elif [[ $(uname -r) =~ 'Microsoft' ]]; then
   # Depends on external SSH agent socket to pageant like https://gist.github.com/buzzbombnc/efc1d4b532db8e181bf335b172e3c590.
   SSH_AUTH_SOCK=/mnt/c/Users/$USER/.ssh/ssh-agent.sock
