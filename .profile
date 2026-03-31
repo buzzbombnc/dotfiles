@@ -5,15 +5,6 @@ if [[ -n "$BREW_BIN" && -x $BREW_BIN ]]; then
     eval "$($BREW_BIN shellenv)"
 fi
 
-# asdf setup
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh" ]]; then
-    # asdf setup -- this might be broken.  It's no longer a script.  https://asdf-vm.com/guide/upgrading-to-v0-16.html
-    . $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
-elif [[ -f $HOME/.asdf/asdf.sh ]]; then
-    . $HOME/.asdf/asdf.sh
-    . $HOME/.asdf/completions/asdf.bash
-fi
-
 # brew version of updated nano for Intel Mac.
 if [[ -x /usr/local/bin/nano ]]; then
     NANO=/usr/local/bin/nano
@@ -118,6 +109,13 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+# asdf setup
+if which asdf >/dev/null 2>&1; then
+    # asdf is installed and on our PATH.  Add the shims + bash completion.
+    PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+    . <(asdf completion bash)
 fi
 
 # Save bash history across sessions.
