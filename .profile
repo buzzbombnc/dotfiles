@@ -118,6 +118,12 @@ if which asdf >/dev/null 2>&1; then
     . <(asdf completion bash)
 fi
 
+# aws cli completion
+if which aws_completer >/dev/null 2>&1; then
+    # aws_completer is installed and on our PATH.
+    complete -C 'aws_completer' aws
+fi
+
 # Save bash history across sessions.
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
